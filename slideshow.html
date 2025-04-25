@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fade Image Slideshow</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    .slideshow {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slideshow">
+    <div class="slide"><img src="https://i.pinimg.com/474x/99/3a/e7/993ae760a2944d557193906361bd10c0.jpg" alt="Image 1"></div>
+    <div class="slide"><img src="https://i.pinimg.com/736x/2d/a9/c4/2da9c4f0d49127e870ba28f8db2c848c.jpg" alt="Image 2"></div>
+    <div class="slide"><img src="https://i.pinimg.com/474x/a2/89/e8/a289e8fe014329fef7e2be5460820b9a.jpg" alt="Image 3"></div>
+    <div class="slide"><img src="https://i.pinimg.com/474x/a7/4e/75/a74e7510a27b0ea2a50a3f817ef7fe7d.jpg" alt="Image 4"></div>
+    <div class="slide"><img src="https://i.pinimg.com/736x/26/5b/27/265b2757722f0e5275081e4ecd2ac53f.jpg" alt="Image 5"></div>
+    <div class="slide"><img src="https://i.pinimg.com/474x/a7/4e/75/a74e7510a27b0ea2a50a3f817ef7fe7d.jpg" alt="Image 6"></div>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlides() {
+      slides.forEach(slide => slide.style.opacity = 0);
+      slides[slideIndex].style.opacity = 1;
+      slideIndex = (slideIndex + 1) % slides.length;
+      setTimeout(showSlides, 4000); // 4 seconds per slide
+    }
+
+    showSlides();
+  </script>
+
+</body>
+</html>
